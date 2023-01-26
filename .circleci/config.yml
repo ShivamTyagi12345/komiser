@@ -44,11 +44,11 @@ jobs:
       - run:
          name: Fix path
          command: mv /tmp/dashboard/out .
-      - run:
-         name: Create assets
-         command: |
-            go-bindata-assetfs -o internal/api/v1/template.go out/...
-            sed -i -e 's/package main/package v1/g' internal/api/v1/template.go
+      #- run:
+         #name: Skip creating assets for now
+         #command: |
+          #  go-bindata-assetfs -o internal/api/v1/template.go out/...
+           # sed -i -e 's/package main/package v1/g' internal/api/v1/template.go
       - run:
          name: Build binary
          command:

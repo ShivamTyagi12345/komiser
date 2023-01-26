@@ -40,7 +40,7 @@
 // out/assets/img/purplin/working.svg
 // out/favicon.ico
 // out/index.html
-package main
+package v1
 
 import (
 	"github.com/elazarl/go-bindata-assetfs"
