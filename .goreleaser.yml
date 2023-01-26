@@ -1,6 +1,10 @@
 builds:
   - env:
       - CGO_ENABLED=0
+    ldflags:
+      - -s -w -X github.com/tailwarden/komiser/internal.Version={{.Version}}
+      - -s -w -X github.com/tailwarden/komiser/internal.Buildtime={{.CommitTimestamp}}
+      - -s -w -X github.com/tailwarden/komiser/internal.Commit={{.ShortCommit}}
     goos:
       - linux
       - darwin
@@ -8,7 +12,6 @@ builds:
     goarch:
       - amd64
       - arm64
-    skip: true
 
 brews:
   - tap:
