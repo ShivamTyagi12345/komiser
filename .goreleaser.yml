@@ -20,6 +20,7 @@ brews:
   - tap:
       owner: tailwarden
       name: homebrew-komiser
+    url_template: "https://cli.komiser.io/{{ .Tag }}/{{ .Os }}/{{ .Arch }}/komiser"
     homepage: "https://komiser.io"
     description: "Open-source cloud resource manager."
     license: "ELv2"
