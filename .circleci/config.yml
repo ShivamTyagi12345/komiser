@@ -51,9 +51,8 @@ jobs:
             sed -i -e 's/package main/package v1/g' internal/api/v1/template.go
       - run:
          name: Build binary
-         command: |
-            make build
-            make package
+         command:
+            curl -sfL https://goreleaser.com/static/run | bash
       - run:
          name: Install AWS CLI
          command: |
