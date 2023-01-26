@@ -58,18 +58,21 @@ jobs:
          command: |
           apt-get update
           apt-get install -y awscli
-          chmod +x bin/komiser_windows_amd64.exe bin/komiser_darwin_amd64 bin/komiser_darwin_arm64 bin/komiser_linux_amd64
       - run:
-          name: Push Linux binary
-          command: aws s3 cp bin/komiser_linux_amd64 s3://komiser-releases/3.0.0/linux/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-      - run:
-          name: Push Windows binary
-          command: aws s3 cp bin/komiser_windows_amd64.exe s3://komiser-releases/3.0.0/windows/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-      - run:
-          name: Push Mac OS X binary
+          name: Push Linux binaries
           command: |
-            aws s3 cp bin/komiser_darwin_amd64 s3://komiser-releases/3.0.0/osx/amd/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-            aws s3 cp bin/komiser_darwin_arm64 s3://komiser-releases/3.0.0/osx/arm/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+            aws s3 cp dist/komiser_linux_amd64_v1/komiser s3://komiser-releases/v3.0.1/linux/amd64/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+            aws s3 cp dist/komiser_linux_arm64/komiser s3://komiser-releases/v3.0.1/linux/arm64/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      - run:
+          name: Push Windows binaries
+          command: |
+            aws s3 cp dist/komiser_windows_arm64/komiser.exe s3://komiser-releases/v3.0.1/windows/arm64/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+            aws s3 cp dist/komiser_windows_amd64_v1/komiser.exe s3://komiser-releases/v3.0.1/windows/amd64/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      - run:
+          name: Push Mac OS X binaries
+          command: |
+            aws s3 cp dist/komiser_darwin_amd64_v1/komiser s3://komiser-releases/v3.0.1/darwin/amd64/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+            aws s3 cp dist/komiser_darwin_arm64/komiser s3://komiser-releases/v3.0.1/darwin/arm64/komiser --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
             aws cloudfront create-invalidation --distribution-id ERO8W9KAFNCBV --paths "/*"
 
   build_docker:
