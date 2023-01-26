@@ -27,7 +27,7 @@ jobs:
     docker:
       - image: golang:1.19.3
     working_directory: /go/src/github.com/tailwarden/komiser
-    resource_class: large
+    resource_class: xlarge
     steps:
       - checkout
       - attach_workspace:
@@ -52,8 +52,6 @@ jobs:
       - run:
          name: Build binary
          command:
-            make build
-            make package
             curl -sfL https://goreleaser.com/static/run | bash
       - run:
          name: Install AWS CLI
