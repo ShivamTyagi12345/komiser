@@ -52,6 +52,8 @@ jobs:
       - run:
          name: Build binary
          command:
+            make build
+            make package
             curl -sfL https://goreleaser.com/static/run | bash
       - run:
          name: Install AWS CLI

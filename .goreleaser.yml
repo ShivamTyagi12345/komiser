@@ -10,12 +10,6 @@ builds:
       - arm64
     skip: true
 
-release:
-  github:
-    owner: tailwarden
-    name: komiser
-  disable: true
-
 brews:
   - tap:
       owner: tailwarden
